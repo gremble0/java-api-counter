@@ -7,6 +7,7 @@ public class CustomCounterControllerTest {
   @Test
   public void testCustom() {
     CustomCounterController controller = new CustomCounterController();
+
     Assertions.assertEquals(0, controller.get("Dave"));
     Assertions.assertEquals(0, controller.get("Herman"));
   }
@@ -14,6 +15,7 @@ public class CustomCounterControllerTest {
   @Test
   public void testIncrementCustom() {
     CustomCounterController controller = new CustomCounterController();
+
     Assertions.assertEquals(1, controller.increment("Dave"));
     Assertions.assertEquals(2, controller.increment("Dave"));
 
@@ -24,6 +26,7 @@ public class CustomCounterControllerTest {
   @Test
   public void testDecrementCustom() {
     CustomCounterController controller = new CustomCounterController();
+
     Assertions.assertEquals(-1, controller.decrement("Dave"));
     Assertions.assertEquals(-2, controller.decrement("Dave"));
 

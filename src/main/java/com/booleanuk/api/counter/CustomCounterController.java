@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CustomCounterController {
-  private final Map<String, Integer> customCounters = new HashMap<>();
+  private final Map<String, Integer> counters = new HashMap<>();
 
   @GetMapping(value = "/counter/custom/{name}")
   public int get(@PathVariable String name) {
-    return this.customCounters.getOrDefault(name, 0);
+    return this.counters.getOrDefault(name, 0);
   }
 
   @GetMapping(value = "/counter/custom/{name}/increment")
   public int increment(@PathVariable String name) {
-    return this.customCounters.merge(name, 1, Integer::sum);
+    return this.counters.merge(name, 1, Integer::sum);
   }
 
   @GetMapping(value = "/counter/custom/{name}/decrement")
   public int decrement(@PathVariable String name) {
-    return this.customCounters.merge(name, -1, Integer::sum);
+    return this.counters.merge(name, -1, Integer::sum);
   }
 }
