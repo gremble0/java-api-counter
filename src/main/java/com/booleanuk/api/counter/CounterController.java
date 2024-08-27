@@ -1,16 +1,11 @@
 package com.booleanuk.api.counter;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CounterController {
   private int counter = 0;
-  private Map<String, Integer> customCounters = new HashMap<>();
 
   @GetMapping(value = "/counter")
   public int get() {
@@ -25,20 +20,5 @@ public class CounterController {
   @GetMapping(value = "/decrement")
   public int decrement() {
     return --this.counter;
-  }
-
-  @GetMapping(value = "/counter/custom/{name}")
-  public int getCustom(@PathVariable String name) {
-    return this.customCounters.getOrDefault(name, 0);
-  }
-
-  @GetMapping(value = "/counter/custom/{name}/increment")
-  public int incrementCustom(@PathVariable String name) {
-    return this.customCounters.merge(name, 1, Integer::sum);
-  }
-
-  @GetMapping(value = "/counter/custom/{name}/decrement")
-  public int decrementCustom(@PathVariable String name) {
-    return this.customCounters.merge(name, -1, Integer::sum);
   }
 }
